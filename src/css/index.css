@@ -22,3 +22,12 @@ body {
   width: 30px;
   height: 36px;
 }
+
+.lotto-count {
+  width: 3em;
+  height: 1.5em;
+}
+
+.hidden {
+  display: none;
+}
