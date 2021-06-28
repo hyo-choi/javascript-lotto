@@ -18,24 +18,30 @@
             <div class="d-flex">
               <input
                 type="number"
+                id="purchase-budget-input__input"
                 class="w-100 mr-2 pl-2"
                 placeholder="구입 금액"
               />
-              <button type="button" class="btn btn-cyan">확인</button>
+              <button
+                type="button"
+                id="purchase-budget-input__button"
+                class="btn btn-cyan">확인</button>
             </div>
           </form>
-          <form class="mt-3">
+          <form id="purchase-count-form" class="mt-3 hidden">
             <div class="d-flex">
               <span class="w-100 pt-1">
                 수동
                 <input
                   type="number"
+                  id="purchase-count-input__manual"
                   class="lotto-count mx-2"
                   value="0"
                   disabled
                 />개, 자동
                 <input
                   type="number"
+                  id="purchase-count-input__auto"
                   class="lotto-count mx-2"
                   value="0"
                   disabled
@@ -50,7 +56,7 @@
               <button type="button" class="w-100 btn btn-cyan">구매하기</button>
             </div>
           </form>
-          <section class="mt-9">
+          <section class="mt-9 hidden">
             <div class="d-flex">
               <label class="flex-auto my-0">총 n개를 구매하였습니다.</label>
               <div class="flex-auto d-flex justify-end pr-1">
@@ -66,7 +72,7 @@
               -->
             </div>
           </section>
-          <form class="mt-9">
+          <form class="mt-9 hidden">
             <label class="flex-auto d-inline-block mb-3"
               >지난 주 당첨번호 6개와 보너스 넘버 1개를 입력해주세요.</label
             >

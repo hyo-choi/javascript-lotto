@@ -1,15 +1,11 @@
-const $showResultButton = document.querySelector('.open-result-modal-button')!;
-const $modalClose = document.querySelector('.modal-close')!;
-const $modal = document.querySelector('.modal')!;
-const $lottoNumbersToggleButton = document.querySelector('.lotto-numbers-toggle-button')!;
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-new */
+import setEventListeners from './view/setEventListeners.js';
+import Lotto from './model/lotto.js';
 
-const onModalShow = () => {
-  $modal.classList.add('open');
+const init = () => {
+  const lotto = new Lotto();
+  setEventListeners(lotto);
 };
 
-const onModalClose = () => {
-  $modal.classList.remove('open');
-};
-
-$showResultButton.addEventListener('click', onModalShow);
-$modalClose.addEventListener('click', onModalClose);
+init();
