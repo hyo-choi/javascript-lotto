@@ -23,3 +23,11 @@ export const WINNING_INPUT = '.winning-number';
 export const BONUS_INPUT = '.bonus-number';
 
 export const RESULT_BUTTON = '.open-result-modal-button';
+export const RESULT_TABLE = '.result-table';
+export const RESULT_YIELD = '#result-yield-percent';
+export const RESULT_RESET_BUTTON = '#result-reset-button';
+
+export const MODAL = '.modal';
+export const MODAL_CLOSE = '.modal-close';
+
+export const PRIZE = [0, 2000000000, 30000000, 1500000, 50000, 5000];

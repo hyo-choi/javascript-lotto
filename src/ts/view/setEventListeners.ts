@@ -3,16 +3,21 @@ import {
   handlePurchaseBudgetInput,
   handleManualCountRenewal,
   handlePurchaseCountInput,
-} from '../controller/handleInput.js';
+} from '../controller/input.js';
 import {
   BUDGET_BUTTON,
   COUNT_BUTTON,
   COUNT_MANUAL_INPUT,
   LOTTO_NUMBER_BUTTON,
   MANUAL_BUTTON,
+  MODAL,
+  MODAL_CLOSE,
+  RESULT_BUTTON,
+  RESULT_RESET_BUTTON,
 } from '../constant/constants.js';
-import handleManualPurchase from '../controller/handlePurchase.js';
+import handleManualPurchase from '../controller/purchase.js';
 import { toggleTicketNumbers } from './print.js';
+import { handleReset, handleResultInput } from '../controller/result.js';
 
 const setInputEvents = (lotto: any) => {
   const $purchaseBudgetButton = document.querySelector(BUDGET_BUTTON)!;
@@ -32,19 +37,26 @@ const setPurchaseEvents = (lotto: any) => {
 
 const setPrintEvents = () => {
   const $lottoNumbersToggleButton = document.querySelector(LOTTO_NUMBER_BUTTON)!;
-  const $showResultButton = document.querySelector('.open-result-modal-button')!;
-  const $modalClose = document.querySelector('.modal-close')!;
-  const $modal = document.querySelector('.modal')!;
 
   $lottoNumbersToggleButton.addEventListener('click', toggleTicketNumbers);
-  $showResultButton.addEventListener('click', () => $modal.classList.add('open'));
-  $modalClose.addEventListener('click', () => $modal.classList.remove('open'));
+};
+
+const setResultEvents = (lotto: any) => {
+  const $showResultButton = document.querySelector(RESULT_BUTTON)!;
+  const $modalCloseButton = document.querySelector(MODAL_CLOSE)!;
+  const $resetResultButton = document.querySelector(RESULT_RESET_BUTTON)!;
+  const $modal = document.querySelector(MODAL)!;
+
+  $showResultButton.addEventListener('click', () => handleResultInput(lotto));
+  $resetResultButton.addEventListener('click', handleReset);
+  $modalCloseButton.addEventListener('click', () => $modal.classList.remove('open'));
 };
 
 const setEventListeners = (lotto: any) => {
   setInputEvents(lotto);
   setPurchaseEvents(lotto);
   setPrintEvents();
+  setResultEvents(lotto);
 };
 
 export default setEventListeners;
