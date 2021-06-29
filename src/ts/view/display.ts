@@ -1,4 +1,15 @@
 /* eslint-disable import/no-unresolved */
+import { MODAL } from '../constant/constants.js';
+
+const openModal = () => {
+  const $modal = document.querySelector(MODAL)!;
+  $modal.classList.add('open');
+};
+
+const closeModal = () => {
+  const $modal = document.querySelector(MODAL)!;
+  $modal.classList.remove('open');
+};
 
 const showElement = (selector: string) => {
   document.querySelector(selector)?.classList.remove('hidden');
@@ -33,6 +44,8 @@ const uncheckButton = (selector: string) => {
 };
 
 export {
+  openModal,
+  closeModal,
   showElement,
   hideElement,
   enableInput,

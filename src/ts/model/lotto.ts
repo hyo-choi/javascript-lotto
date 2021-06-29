@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import {
+  BUDGET_INPUT,
   COUNT_AUTO_INPUT,
   COUNT_FORM,
   COUNT_MANUAL_INPUT,
@@ -14,6 +15,7 @@ import {
   enableInput,
   hideElement,
   uncheckButton,
+  closeModal,
 } from '../view/display.js';
 import { setInputValue, setInputMinMax } from '../view/input.js';
 import setManualPurchaseDiv from '../view/purchase.js';
@@ -115,6 +117,19 @@ class Lotto {
     });
     const prize = array.reduce((acc, num, idx) => acc + PRIZE[idx] * num, 0);
     setResult(array, prize === 0 ? '0' : ((prize / this.cost) * 100).toFixed(2));
+  }
+
+  reset() {
+    this.cost = 0;
+    this.tickets.length = 0;
+    this.autoCount = 0;
+    this.manualCount = 0;
+    setInputValue(BUDGET_INPUT, '');
+    hideElement(COUNT_FORM);
+    hideElement(MANUAL_FORM);
+    hideElement(LOTTO_NUMBERS);
+    hideElement(WINNING_FORM);
+    closeModal();
   }
 }
 

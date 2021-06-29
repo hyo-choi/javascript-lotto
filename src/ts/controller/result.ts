@@ -46,8 +46,8 @@ const handleResultInput = (lotto: Lotto) => {
   $modal.classList.add('open');
 };
 
-const handleReset = () => {
-  // TODO: reset
+const handleReset = (lotto: Lotto) => {
+  lotto.reset();
 };
 
 export { handleResultInput, handleReset };

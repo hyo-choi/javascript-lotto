@@ -10,7 +10,6 @@ import {
   COUNT_MANUAL_INPUT,
   LOTTO_NUMBER_BUTTON,
   MANUAL_BUTTON,
-  MODAL,
   MODAL_CLOSE,
   RESULT_BUTTON,
   RESULT_RESET_BUTTON,
@@ -18,6 +17,7 @@ import {
 import handleManualPurchase from '../controller/purchase.js';
 import { toggleTicketNumbers } from './print.js';
 import { handleReset, handleResultInput } from '../controller/result.js';
+import { closeModal } from './display.js';
 
 const setInputEvents = (lotto: any) => {
   const $purchaseBudgetButton = document.querySelector(BUDGET_BUTTON)!;
@@ -45,11 +45,10 @@ const setResultEvents = (lotto: any) => {
   const $showResultButton = document.querySelector(RESULT_BUTTON)!;
   const $modalCloseButton = document.querySelector(MODAL_CLOSE)!;
   const $resetResultButton = document.querySelector(RESULT_RESET_BUTTON)!;
-  const $modal = document.querySelector(MODAL)!;
 
   $showResultButton.addEventListener('click', () => handleResultInput(lotto));
-  $resetResultButton.addEventListener('click', handleReset);
-  $modalCloseButton.addEventListener('click', () => $modal.classList.remove('open'));
+  $resetResultButton.addEventListener('click', () => handleReset(lotto));
+  $modalCloseButton.addEventListener('click', closeModal);
 };
 
 const setEventListeners = (lotto: any) => {
