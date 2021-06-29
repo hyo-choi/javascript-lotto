@@ -39,11 +39,25 @@ const checkValidNumbers = (): boolean => {
   return isValid;
 };
 
+const makeLottoNumbers = (): Array<number>[] => {
+  const $lines = document.querySelectorAll(MANUAL_P);
+  const tickets: Array<number>[] = [];
+
+  $lines.forEach(($line: HTMLParagraphElement) => {
+    const $inputs = Array.from($line.querySelectorAll(MANUAL_INPUT));
+    const ticket: number[] = [];
+
+    $inputs.forEach(($input: HTMLInputElement) => ticket.push(Number($input.value)));
+    tickets.push(ticket);
+  });
+  return tickets;
+};
+
 const handleManualPurchase = (lotto: any) => {
   if (!checkValidNumbers()) {
     return;
   }
-  lotto.handleManualPurchase();
+  lotto.handleManualPurchase(makeLottoNumbers());
   lotto.handleAutoPurchase();
   lotto.handlePurchaseDone();
 };

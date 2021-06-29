@@ -4,12 +4,29 @@ import {
   COUNT_FORM,
   COUNT_MANUAL_INPUT,
   LOTTO_NUMBERS,
+  LOTTO_NUMBER_BUTTON,
   MANUAL_FORM,
   WINNING_FORM,
 } from '../constant/constants.js';
-import { showElement, enableInput, hideElement } from '../view/display.js';
+import {
+  showElement,
+  enableInput,
+  hideElement,
+  uncheckButton,
+} from '../view/display.js';
 import { setInputValue, setInputMinMax } from '../view/input.js';
 import setManualPurchaseDiv from '../view/purchase.js';
+import { addTicket, resetTickets, setTicketNumbers } from '../view/print.js';
+import Ticket from './ticket.js';
+
+const makeRandomLotto = (): number[] => {
+  const set = new Set();
+
+  while (set.size < 6) {
+    set.add((Math.floor(Math.random() * 100) % 45) + 1);
+  }
+  return Array.from(set) as number[];
+};
 
 class Lotto {
   budget: number;
@@ -18,10 +35,13 @@ class Lotto {
 
   autoCount: number;
 
+  tickets: Ticket[];
+
   constructor() {
     this.budget = 0;
     this.manualCount = 0;
     this.autoCount = 0;
+    this.tickets = [];
   }
 
   handleBudget(budget: number) {
@@ -43,8 +63,11 @@ class Lotto {
   handleCount(manual: number, auto: number) {
     hideElement(LOTTO_NUMBERS);
     hideElement(WINNING_FORM);
+
+    this.tickets.length = 0;
     this.manualCount = manual;
     this.autoCount = auto;
+
     if (!manual && auto) {
       this.handleAutoPurchase();
     } else if (manual) {
@@ -52,24 +75,32 @@ class Lotto {
     }
   }
 
-  handleManualPurchase() {
-    // TODO: 수동 구매 처리
+  handleManualPurchase(numbers: Array<number>[]) {
+    numbers.forEach((number) => this.tickets.push(new Ticket(number)));
   }
 
   handleAutoPurchase() {
     if (!this.autoCount) {
       return;
     }
-    // TODO: 자동 구매 처리
+    for (let i = 0; i < this.autoCount; i += 1) {
+      this.tickets.push(new Ticket(makeRandomLotto()));
+    }
     this.handlePurchaseDone();
   }
 
   handlePurchaseDone() {
     hideElement(COUNT_FORM);
     hideElement(MANUAL_FORM);
+
+    uncheckButton(LOTTO_NUMBER_BUTTON);
+    resetTickets();
+    setTicketNumbers(this.tickets.length);
+    this.tickets.forEach((ticket) => {
+      addTicket(ticket.numbers);
+    });
     showElement(LOTTO_NUMBERS);
     showElement(WINNING_FORM);
-    // TODO: show result section, form
   }
 }
 

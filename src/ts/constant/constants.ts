@@ -13,6 +13,9 @@ export const MANUAL_P = '.manual-numbers';
 export const MANUAL_INPUT = '.manual-number';
 
 export const LOTTO_NUMBERS = '#lotto-numbers-section';
+export const LOTTO_COUNT = '#lotto-numbers-count';
+export const LOTTO_TICKETS = '#lotto-numbers-tickets';
+export const LOTTO_NUMBER = '.lotto-numbers-tickets__number';
 export const LOTTO_NUMBER_BUTTON = '.lotto-numbers-toggle-button';
 
 export const WINNING_FORM = '#winning-number-form';

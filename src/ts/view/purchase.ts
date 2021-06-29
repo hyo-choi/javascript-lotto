@@ -1,6 +1,9 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-param-reassign */
-import { MANUAL_DIV, MANUAL_FORM } from '../constant/constants.js';
+import {
+  MANUAL_DIV,
+  MANUAL_FORM,
+} from '../constant/constants.js';
 import { showElement } from './display.js';
 
 const resetManualPurchaseDiv = (selector: string) => {
