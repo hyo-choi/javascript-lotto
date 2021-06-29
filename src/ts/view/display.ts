@@ -7,11 +7,19 @@ const hideElement = (selector: string) => {
 };
 
 const enableInput = (selector: string) => {
-  (document.querySelector(selector) as HTMLInputElement)!.disabled = false;
+  const target: HTMLInputElement | null = document.querySelector(selector);
+  if (!target) {
+    return;
+  }
+  target.disabled = false;
 };
 
 const disableInput = (selector: string) => {
-  (document.querySelector(selector) as HTMLInputElement)!.disabled = true;
+  const target: HTMLInputElement | null = document.querySelector(selector);
+  if (!target) {
+    return;
+  }
+  target.disabled = true;
 };
 
 export {
