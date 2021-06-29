@@ -3,8 +3,6 @@
 /* eslint-disable no-alert */
 import { getInputValue, getInputMax, setInputValue } from '../view/input.js';
 import {
-  showElement,
-  enableInput,
   disableInput,
   hideElement,
 } from '../view/display.js';
@@ -36,8 +34,6 @@ const handlePurchaseBudgetInput = (lotto: any) => {
     return;
   }
   lotto.handleBudget(Number(getInputValue(BUDGET_INPUT)));
-  showElement(COUNT_FORM);
-  enableInput(COUNT_MANUAL_INPUT);
 };
 
 const checkCount = (input: string, max: number): boolean => {
@@ -65,4 +61,9 @@ const handleManualCountRenewal = () => {
   setInputValue(COUNT_AUTO_INPUT, max - Number(manualCount));
 };
 
-export { handlePurchaseBudgetInput, handleManualCountRenewal };
+const handlePurchaseCountInput = (lotto: any) => {
+  lotto.handleCount(Number(getInputValue(COUNT_MANUAL_INPUT)),
+    Number(getInputValue(COUNT_AUTO_INPUT)));
+};
+
+export { handlePurchaseBudgetInput, handleManualCountRenewal, handlePurchaseCountInput };
