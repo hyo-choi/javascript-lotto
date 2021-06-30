@@ -18,23 +18,14 @@ const hideElement = (selector) => {
 };
 const enableInput = (selector) => {
     const target = document.querySelector(selector);
-    if (!target) {
-        return;
-    }
     target.disabled = false;
 };
 const disableInput = (selector) => {
     const target = document.querySelector(selector);
-    if (!target) {
-        return;
-    }
     target.disabled = true;
 };
 const uncheckButton = (selector) => {
     const target = document.querySelector(selector);
-    if (!target) {
-        return;
-    }
     target.checked = false;
 };
 export { openModal, closeModal, showElement, hideElement, enableInput, disableInput, uncheckButton, };

@@ -38,20 +38,31 @@ const checkCount = (input, max) => {
     }
     return true;
 };
-const handleManualCountRenewal = () => {
+const checkCountValues = () => {
     const manualCount = getInputValue(COUNT_MANUAL_INPUT);
     const max = getInputMax(COUNT_MANUAL_INPUT);
     if (manualCount === '') {
-        return;
+        setInputValue(COUNT_MANUAL_INPUT, 0);
+        setInputValue(COUNT_AUTO_INPUT, max);
+        return false;
     }
     if (!checkCount(manualCount, max)) {
         setInputValue(COUNT_MANUAL_INPUT, 0);
         setInputValue(COUNT_AUTO_INPUT, max);
+        return false;
+    }
+    return true;
+};
+const handleManualCountRenewal = () => {
+    if (!checkCountValues()) {
         return;
     }
-    setInputValue(COUNT_AUTO_INPUT, max - Number(manualCount));
+    setInputValue(COUNT_AUTO_INPUT, getInputMax(COUNT_MANUAL_INPUT) - Number(getInputValue(COUNT_MANUAL_INPUT)));
 };
 const handlePurchaseCountInput = (lotto) => {
+    if (!checkCountValues()) {
+        return;
+    }
     lotto.handleCount(Number(getInputValue(COUNT_MANUAL_INPUT)), Number(getInputValue(COUNT_AUTO_INPUT)));
 };
 export { handlePurchaseBudgetInput, handleManualCountRenewal, handlePurchaseCountInput };
