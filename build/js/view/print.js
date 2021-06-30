@@ -15,6 +15,7 @@ const addTicket = (numbers) => {
 };
 const resetTickets = () => {
     const $ticketsDiv = document.querySelector(LOTTO_TICKETS);
+    $ticketsDiv.classList.remove('flex-col');
     $ticketsDiv.textContent = '';
 };
 const toggleTicketNumbers = (e) => {
