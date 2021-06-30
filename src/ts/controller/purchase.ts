@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable import/no-unresolved */
 import { MANUAL_INPUT, MANUAL_P } from '../constant/constants.js';
+import Lotto from '../model/lotto.js';
 
 const checkValidNumber = ($line: HTMLParagraphElement): boolean => {
   const $inputs: readonly HTMLInputElement[] = Array.from($line.querySelectorAll(MANUAL_INPUT));
@@ -53,7 +54,7 @@ const makeLottoNumbers = (): Array<number>[] => {
   return tickets;
 };
 
-const handleManualPurchase = (lotto: any) => {
+const handleManualPurchase = (lotto: Lotto) => {
   if (!checkValidNumbers()) {
     return;
   }
