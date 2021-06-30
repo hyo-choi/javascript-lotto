@@ -79,7 +79,7 @@ class Lotto {
     }
   }
 
-  handleManualPurchase(numbers: Array<number>[]) {
+  handleManualPurchase(numbers: readonly Array<number>[]) {
     numbers.forEach((number) => this.tickets.push(new Ticket(number)));
   }
 
@@ -108,7 +108,7 @@ class Lotto {
     showElement(WINNING_FORM);
   }
 
-  handleResultInput(result: number[], bonus: number) {
+  handleResultInput(result: readonly number[], bonus: number) {
     const array: number[] = Array<number>(6);
 
     array.fill(0);

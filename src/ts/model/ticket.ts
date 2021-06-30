@@ -1,11 +1,11 @@
 class Ticket {
   numbers: number[];
 
-  constructor(numbers: number[]) {
-    this.numbers = numbers;
+  constructor(numbers: readonly number[]) {
+    this.numbers = Array.from(numbers);
   }
 
-  getGameResult(result: number[], bonus: number): number {
+  getGameResult(result: readonly number[], bonus: number): number {
     // eslint-disable-next-line arrow-body-style
     const num: number = this.numbers.reduce((acc, cur) => {
       return result.includes(cur) ? acc + 1 : acc;

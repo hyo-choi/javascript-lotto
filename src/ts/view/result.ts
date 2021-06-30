@@ -16,7 +16,7 @@ const resetWinningInputs = () => {
   $bonusInput.value = '';
 };
 
-const setResult = (array: number[], percent: string) => {
+const setResult = (array: readonly number[], percent: string) => {
   const $resultTable: HTMLTableElement = document.querySelector(RESULT_TABLE)!;
   const $resultRows: HTMLTableRowElement[] = Array.from($resultTable.querySelectorAll('tbody tr')!);
   const $resultYield: HTMLParagraphElement = document.querySelector(RESULT_YIELD)!;

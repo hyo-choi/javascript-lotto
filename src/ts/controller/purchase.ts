@@ -3,7 +3,7 @@
 import { MANUAL_INPUT, MANUAL_P } from '../constant/constants.js';
 
 const checkValidNumber = ($line: HTMLParagraphElement): boolean => {
-  const $inputs = Array.from($line.querySelectorAll(MANUAL_INPUT));
+  const $inputs: readonly HTMLInputElement[] = Array.from($line.querySelectorAll(MANUAL_INPUT));
   const set = new Set();
 
   for (let i = 0; i < 6; i += 1) {
@@ -28,7 +28,7 @@ const checkValidNumber = ($line: HTMLParagraphElement): boolean => {
 };
 
 const checkValidNumbers = (): boolean => {
-  const $lines = document.querySelectorAll(MANUAL_P);
+  const $lines: readonly HTMLParagraphElement[] = Array.from(document.querySelectorAll(MANUAL_P));
   let isValid = true;
 
   $lines.forEach(($line: HTMLInputElement) => {
@@ -40,11 +40,11 @@ const checkValidNumbers = (): boolean => {
 };
 
 const makeLottoNumbers = (): Array<number>[] => {
-  const $lines = document.querySelectorAll(MANUAL_P);
+  const $lines: readonly HTMLParagraphElement[] = Array.from(document.querySelectorAll(MANUAL_P));
   const tickets: Array<number>[] = [];
 
   $lines.forEach(($line: HTMLParagraphElement) => {
-    const $inputs = Array.from($line.querySelectorAll(MANUAL_INPUT));
+    const $inputs: readonly HTMLInputElement[] = Array.from($line.querySelectorAll(MANUAL_INPUT));
     const ticket: number[] = [];
 
     $inputs.forEach(($input: HTMLInputElement) => ticket.push(Number($input.value)));

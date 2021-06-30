@@ -11,7 +11,7 @@ const setTicketNumbers = (count: number) => {
   $counter.textContent = `총 ${count}개를 구매하였습니다.`;
 };
 
-const addTicket = (numbers: number[]) => {
+const addTicket = (numbers: readonly number[]) => {
   const $ticketsDiv: HTMLDivElement = document.querySelector(LOTTO_TICKETS)!;
 
   $ticketsDiv.insertAdjacentHTML('beforeend', `

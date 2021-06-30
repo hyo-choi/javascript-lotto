@@ -3,7 +3,7 @@
 import { BONUS_INPUT, MODAL, WINNING_INPUT } from '../constant/constants.js';
 import Lotto from '../model/lotto.js';
 
-const checkResult = (...$inputs: HTMLInputElement[]): boolean => {
+const checkResult = (...$inputs: readonly HTMLInputElement[]): boolean => {
   const set = new Set();
 
   for (let i = 0; i < $inputs.length; i += 1) {
@@ -27,7 +27,7 @@ const checkResult = (...$inputs: HTMLInputElement[]): boolean => {
   return true;
 };
 
-const makeNumberArray = ($inputs: HTMLInputElement[]): number[] => {
+const makeNumberArray = ($inputs: readonly HTMLInputElement[]): number[] => {
   const array: number[] = [];
 
   $inputs.forEach(($input) => array.push(Number($input.value)));
@@ -36,7 +36,7 @@ const makeNumberArray = ($inputs: HTMLInputElement[]): number[] => {
 
 const handleResultInput = (lotto: Lotto) => {
   const $modal = document.querySelector(MODAL)!;
-  const $winningInputs: HTMLInputElement[] = Array.from(document.querySelectorAll(WINNING_INPUT)!);
+  const $winningInputs: readonly HTMLInputElement[] = Array.from(document.querySelectorAll(WINNING_INPUT)!);
   const $bonusInput: HTMLInputElement = document.querySelector(BONUS_INPUT)!;
 
   if (!checkResult(...$winningInputs, $bonusInput)) {
