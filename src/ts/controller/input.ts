@@ -12,6 +12,7 @@ import {
   COUNT_MANUAL_INPUT,
   COUNT_AUTO_INPUT,
 } from '../constant/constants.js';
+import Lotto from '../model/lotto.js';
 
 const checkBudget = (input: string): boolean => {
   if (input === '') {
@@ -27,7 +28,7 @@ const checkBudget = (input: string): boolean => {
   return true;
 };
 
-const handlePurchaseBudgetInput = (lotto: any) => {
+const handlePurchaseBudgetInput = (lotto: Lotto) => {
   if (!checkBudget(getInputValue(BUDGET_INPUT))) {
     hideElement(COUNT_FORM);
     disableInput(COUNT_MANUAL_INPUT);
@@ -61,7 +62,7 @@ const handleManualCountRenewal = () => {
   setInputValue(COUNT_AUTO_INPUT, max - Number(manualCount));
 };
 
-const handlePurchaseCountInput = (lotto: any) => {
+const handlePurchaseCountInput = (lotto: Lotto) => {
   lotto.handleCount(Number(getInputValue(COUNT_MANUAL_INPUT)),
     Number(getInputValue(COUNT_AUTO_INPUT)));
 };

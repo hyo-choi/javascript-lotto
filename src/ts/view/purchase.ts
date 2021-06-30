@@ -7,10 +7,7 @@ import {
 import { showElement } from './display.js';
 
 const resetManualPurchaseDiv = (selector: string) => {
-  const target: HTMLDivElement | null = document.querySelector(selector);
-  if (!target) {
-    return;
-  }
+  const target: HTMLDivElement = document.querySelector(selector)!;
   target.textContent = '';
 };
 
