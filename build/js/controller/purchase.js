@@ -25,7 +25,7 @@ const checkValidNumber = ($line) => {
     return true;
 };
 const checkValidNumbers = () => {
-    const $lines = document.querySelectorAll(MANUAL_P);
+    const $lines = Array.from(document.querySelectorAll(MANUAL_P));
     let isValid = true;
     $lines.forEach(($line) => {
         if (isValid) {
@@ -35,7 +35,7 @@ const checkValidNumbers = () => {
     return isValid;
 };
 const makeLottoNumbers = () => {
-    const $lines = document.querySelectorAll(MANUAL_P);
+    const $lines = Array.from(document.querySelectorAll(MANUAL_P));
     const tickets = [];
     $lines.forEach(($line) => {
         const $inputs = Array.from($line.querySelectorAll(MANUAL_INPUT));

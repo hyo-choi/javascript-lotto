@@ -4,9 +4,6 @@ import { MANUAL_DIV, MANUAL_FORM, } from '../constant/constants.js';
 import { showElement } from './display.js';
 const resetManualPurchaseDiv = (selector) => {
     const target = document.querySelector(selector);
-    if (!target) {
-        return;
-    }
     target.textContent = '';
 };
 const makeNumberInput = (idx) => {

@@ -1,6 +1,6 @@
 class Ticket {
     constructor(numbers) {
-        this.numbers = numbers;
+        this.numbers = Array.from(numbers);
     }
     getGameResult(result, bonus) {
         // eslint-disable-next-line arrow-body-style
