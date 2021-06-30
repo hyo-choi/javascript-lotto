@@ -20,26 +20,17 @@ const hideElement = (selector: string) => {
 };
 
 const enableInput = (selector: string) => {
-  const target: HTMLInputElement | null = document.querySelector(selector);
-  if (!target) {
-    return;
-  }
+  const target: HTMLInputElement = document.querySelector(selector)!;
   target.disabled = false;
 };
 
 const disableInput = (selector: string) => {
-  const target: HTMLInputElement | null = document.querySelector(selector);
-  if (!target) {
-    return;
-  }
+  const target: HTMLInputElement = document.querySelector(selector)!;
   target.disabled = true;
 };
 
 const uncheckButton = (selector: string) => {
-  const target: HTMLInputElement | null = document.querySelector(selector);
-  if (!target) {
-    return;
-  }
+  const target: HTMLInputElement = document.querySelector(selector)!;
   target.checked = false;
 };
 
