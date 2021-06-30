@@ -29,13 +29,16 @@ const resetTickets = () => {
 
 const toggleTicketNumbers = (e: MouseEvent) => {
   const target: HTMLInputElement = e.target as HTMLInputElement;
+  const $ticketDiv: HTMLDivElement = document.querySelector(LOTTO_TICKETS)!;
   const $tickets = document.querySelectorAll(LOTTO_NUMBER);
 
   if (target.checked) {
+    $ticketDiv.classList.add('flex-col');
     $tickets.forEach(($ticket) => {
       $ticket.classList.remove('hidden');
     });
   } else {
+    $ticketDiv.classList.remove('flex-col');
     $tickets.forEach(($ticket) => {
       $ticket.classList.add('hidden');
     });
