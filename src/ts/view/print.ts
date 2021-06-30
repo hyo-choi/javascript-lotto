@@ -24,6 +24,7 @@ const addTicket = (numbers: readonly number[]) => {
 
 const resetTickets = () => {
   const $ticketsDiv: HTMLDivElement = document.querySelector(LOTTO_TICKETS)!;
+  $ticketsDiv.classList.remove('flex-col');
   $ticketsDiv.textContent = '';
 };
 
