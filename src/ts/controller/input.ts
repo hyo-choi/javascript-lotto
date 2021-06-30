@@ -49,20 +49,34 @@ const checkCount = (input: string, max: number): boolean => {
   return true;
 };
 
-const handleManualCountRenewal = () => {
+const checkCountValues = (): boolean => {
   const manualCount: string = getInputValue(COUNT_MANUAL_INPUT);
   const max: number = getInputMax(COUNT_MANUAL_INPUT);
   if (manualCount === '') {
-    return;
+    setInputValue(COUNT_MANUAL_INPUT, 0);
+    setInputValue(COUNT_AUTO_INPUT, max);
+    return false;
   } if (!checkCount(manualCount, max)) {
     setInputValue(COUNT_MANUAL_INPUT, 0);
     setInputValue(COUNT_AUTO_INPUT, max);
+    return false;
+  }
+  return true;
+}
+
+const handleManualCountRenewal = () => {
+  if (!checkCountValues()) {
     return;
   }
-  setInputValue(COUNT_AUTO_INPUT, max - Number(manualCount));
+  setInputValue(COUNT_AUTO_INPUT,
+    getInputMax(COUNT_MANUAL_INPUT) - Number(getInputValue(COUNT_MANUAL_INPUT))
+    );
 };
 
 const handlePurchaseCountInput = (lotto: Lotto) => {
+  if (!checkCountValues()) {
+    return;
+  }
   lotto.handleCount(Number(getInputValue(COUNT_MANUAL_INPUT)),
     Number(getInputValue(COUNT_AUTO_INPUT)));
 };
